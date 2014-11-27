@@ -7,25 +7,25 @@ class Dashboard extends CI_Controller
         parent::__construct();
         
         $this->load->library('form_validation');
-        $this->load->model('user_model');        
+//        $this->load->model('user_model');        
         $this->load->library('pagination');
     }
     
     public function index($error="")
     {          
         //if user is logged in this will redirect to dashboard page
-        if(($this->session->userdata('user_name')!=""))
-        {
+//        if(($this->session->userdata('user_name')!=""))
+//        {
             $this->welcome();
-        }
-        
-        else//It will redirect to login page
-        {
-//            echo $error;
-            $data['title'] = "Login";            
-            $data['error'] = $error;            
-            $this->load->view("login_view.php",$data);            
-        }
+//        }
+//        
+//        else//It will redirect to login page
+//        {
+////            echo $error;
+//            $data['title'] = "Login";            
+//            $data['error'] = $error;            
+//            $this->load->view("login_view.php",$data);            
+//        }
     }
     
     public function welcome()//When User Is Logged In...

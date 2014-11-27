@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>application/views/instructions.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>136</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/wamp/www/esparkExam/application/views/question_master/list_question.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/controllers/result.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/controllers/exam.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/views/results/result.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/views/question_master/add_question.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/models/result_model.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/views/showQuestions.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/models/exam_model.php</file>
+        </group>
+    </open-files>
+</project-private>
