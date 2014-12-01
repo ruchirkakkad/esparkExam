@@ -15,11 +15,13 @@
             <file>file:/C:/wamp/www/esparkExam/application/views/question_master/list_question.php</file>
             <file>file:/C:/wamp/www/esparkExam/application/controllers/result.php</file>
             <file>file:/C:/wamp/www/esparkExam/application/controllers/exam.php</file>
-            <file>file:/C:/wamp/www/esparkExam/application/views/results/result.php</file>
             <file>file:/C:/wamp/www/esparkExam/application/views/question_master/add_question.php</file>
             <file>file:/C:/wamp/www/esparkExam/application/models/result_model.php</file>
             <file>file:/C:/wamp/www/esparkExam/application/views/showQuestions.php</file>
             <file>file:/C:/wamp/www/esparkExam/application/models/exam_model.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/views/results/studentResult.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/views/left_view.php</file>
+            <file>file:/C:/wamp/www/esparkExam/application/views/results/collegeWiseResult.php</file>
         </group>
     </open-files>
 </project-private>

@@ -1,4 +1,4 @@
-body{ font-family: 'open_sansregular'; color:#000; font-size:15px; }
+body{ font-family: 'open_sansregular' !important; color:#000; font-size:15px; }
 
 @font-face {
     font-family: 'open_sansregular';
@@ -35,7 +35,7 @@ body{ font-family: 'open_sansregular'; color:#000; font-size:15px; }
 .mid_left .button_box input[type=button] { border:none; outline:none; background: linear-gradient(to top, #f63 0%,#fc3439 50%,#e7373c 51%,#ca2226 100%); padding:5px 10px; color:#FFF; border-radius:3px; }
 .mid_left .button_box input[type=submit] { border:none; outline:none; background: linear-gradient(to top, #62ce95 0%,#52c187 50%,#3ea670 51%,#2c8b59 100%); padding:5px 10px; color:#FFF; border-radius:3px; }
 
-.mid_right { float:left; }
+.mid_right { float: left ;}
 .mid_right .section_view { background:#104067; padding-bottom:5px; padding-top:5px; color:#FFF; border-bottom: #fff solid 1px; }
 .mid_right .ex_name { background:#104067; margin-top:5px; padding-bottom:5px; padding-top:5px; color:#FFF; text-align: center; font-weight: bold; }
 .mid_right .midright_question { background:#104067; color:#FFF; }
@@ -52,6 +52,11 @@ body{ font-family: 'open_sansregular'; color:#000; font-size:15px; }
 .mid_right .midright_bottom ul li { float:left; width:50%; padding:2px; }
 .mid_right .midright_bottom ul li img { margin-right:5px; }
 .mid_right .midright_bottom .submition input[type=submit] { background: linear-gradient(to top, #62ce95 0%,#52c187 50%,#3ea670 51%,#2c8b59 100%); padding:5px 10px; color:#FFF; border-radius:3px; padding:5px 10px; border:none; outline:none; margin:5px; }
+
+.exam_complete { text-align: center; min-height: 480px; }
+.exam_complete h1 { font-size: 36px; font-weight: bold; padding-top: 150px; }
+.rem-time { display: inline-block }
+.rem-time span { padding:15px 30px; float: left; font-size: 24px; }
 
 .footer { width:100%; padding:0px; background:#fc3439; text-align:center; height:auto; padding:5px 0; clear:both; color:#FFF; font-size: 12px; line-height: 12px; }
 

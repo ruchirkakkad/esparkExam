@@ -16,7 +16,17 @@ class Dashboard extends CI_Controller
         //if user is logged in this will redirect to dashboard page
 //        if(($this->session->userdata('user_name')!=""))
 //        {
-            $this->welcome();
+        $username = $this->session->userdata('username');
+
+        if($username != '')
+        {
+             $this->welcome();
+        }
+        else
+        {
+            redirect('admin');
+        }
+       
 //        }
 //        
 //        else//It will redirect to login page
@@ -54,17 +64,17 @@ class Dashboard extends CI_Controller
     public function logout()
     {
         
-        $newdata = array(
-        'user_id'   =>'',
-        'user_name'  =>'',
-        'user_email'     => '',
-        'logged_in' => FALSE,
-        );
-        $this->session->unset_userdata($newdata);
-        $this->session->unset_userdata('history_of_user');
-        
-        //$this->session->sess_destroy();
-        $this->index();
+//        $newdata = array(
+//        'user_id'   =>'',
+//        'user_name'  =>'',
+//        'user_email'     => '',
+//        'logged_in' => FALSE,
+//        );
+//        $this->session->unset_userdata($newdata);
+//        $this->session->unset_userdata('history_of_user');
+//        
+        $this->session->sess_destroy();
+        redirect('admin');
     }
     
 }

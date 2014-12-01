@@ -1,3 +1,16 @@
+       <script src="<?php echo base_url() ?>assets/frontend/js/jquery.min.js"></script>
+<script>
+    
+
+function startTimer()
+{
+    localStorage.setItem('timer', 10);
+    return true;
+}
+
+
+</script>
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -129,18 +142,17 @@
                     </ul>
                     </p>
                 </fieldset>
-                <input type="submit" value="Start Exam" />
+                <input type="submit" onclick="return startTimer();" value="Start Exam" />
             </form>
         </div>
 
         <script type="text/javascript">
             function preventBack() {
-                window.history.forward();
-            }
-            setTimeout("preventBack()", 0);
-            window.onunload = function () {
-                null
-            };
+                    window.history.forward();
+                }
+                setTimeout("preventBack()", 0);
+                window.onunload = function () {
+                };
         </script>
     </body>
 </html>

@@ -34,7 +34,9 @@ class Question_master_model extends CI_Model
     {
         date_default_timezone_set('Asia/Kolkata');
         $data['created_at'] = date('y-m-d H:i:s');
-        return $this->db->insert('question_master', $data);
+        
+        $this->db->insert('question_master', $data);
+        return $this->db->insert_id();
     }
     
     public function updateQuestions($data,$id)

@@ -4,7 +4,6 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
     instructions how to enable JavaScript in your web browser</a>.
 </noscript>
 <script language="JavaScript">
-alert(confirmExit());
     window.onbeforeunload = confirmExit;
     function confirmExit() {
         return "You have attempted to leave this page. Are you sure?";
@@ -28,10 +27,13 @@ alert(confirmExit());
     </head>
 
     <body>
+
         <div class="main">
+
             <div class="col-md-12 main_top"><img src="<?php echo base_url() ?>assets/frontend/images/logo.png" class="img-responsive" ></div><!--main_top end-->
 
             <div class="col-md-12 middle_part">
+
                 <div class="main_content">
                     <ul class="nav-tabs">
                         <?php
@@ -74,7 +76,7 @@ alert(confirmExit());
 
                             <div class="col-md-3 mid_right">
                                 <div class="col-md-12 ex_name"><?php echo $this->session->userdata('users')['firstname'] . " " . $this->session->userdata('users')['lastname'] ?></div>
-                                <div class="col-md-12 section_view" id="newPage"></div>
+                                <div class="col-md-12 section_view rem-time" id="timer"></div>
                                 <div class="col-md-12 midright_question">Question Palette</div>
                                 <div class="col-md-12 question_range">
                                     <ul class="question_palette">
@@ -85,7 +87,7 @@ alert(confirmExit());
                                     <ul>
                                         <li><img src="<?php echo base_url() ?>assets/frontend/images/ans.png" class="img-responsive" alt=" ">Answered</li>
                                         <li><img src="<?php echo base_url() ?>assets/frontend/images/not_ans.png" class="img-responsive" alt=" ">Not Answered</li>
-                                        <li><img src="<?php echo base_url() ?>assets/frontend/images/mark.png" class="img-responsive" alt=" ">Marked</li>
+                                        <!--<li><img src="<?php echo base_url() ?>assets/frontend/images/mark.png" class="img-responsive" alt=" ">Marked</li>-->
                                         <li><img src="<?php echo base_url() ?>assets/frontend/images/nv.png" class="img-responsive" alt=" ">Not Visited</li>
                                     </ul>
                                     <div class="submition text-center"><input class="submitTest" type="submit" value="SUBMIT"></div>
@@ -94,12 +96,128 @@ alert(confirmExit());
                         </div>
                     </div>
                 </div>
+
             </div><!--middle_part end-->
 
             <div class="footer">
                 <div >Copyright &COPY; eSparkbiz pvt ltd 2014.</div>
             </div>
+            <div id="loading-image" style="z-index: 99999;left: 0px ;top:0px;width:100%;height:100%;position:absolute;display:none !important;text-align: center;opacity: 0.7; background: [10:44:25 AM] Devashree Parikh: rgba(255, 255, 255, 0.9)">
+                <img src="<?php echo base_url() ?>assets/img/framely.gif" alt="loading" width="400px" height="400px" style="position: absolute;left:50%;top:50%;margin:-200px 0 0 -200px;"/>
+            </div>
+            <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+            <script>
+
+    var updateTimer = function () {
+        timer = localStorage.getItem('timer') || 0;
+        if (timer == 0) {
+//            timer--;
+            localStorage.setItem('timer', timer);
+            jQuery.ajax({
+                url: '<?php echo base_url(); ?>exam/logout',
+                type: 'post',
+                data: {},
+                success: function (data) {
+                    $('.middle_part').html('<div class="exam_complete"><h1>You successfully completed the exam</h1></div>');
+//                    alert('Your Exam is Submitted');
+                }
+            });
+            $("div#timer").html("Timer is unset");
+        } else {
+            timer--;
+
+
+            var s = timer;
+            var h = Math.floor(s / 3600); //Get whole hours
+            s -= h * 3600;
+            var m = Math.floor(s / 60); //Get remaining minutes
+            s -= m * 60;
+            var string = "<span>" + h + "</span><span>" + m + "</span><span>" + s + "</span>";
+
+            localStorage.setItem('timer', timer);
+            $("div#timer").html(string);
+        }
+    };
+
+
+            </script>
+<!--            <script>
+    function setCounter(count) {
+        $.cookie('mytimeout', 0);
+        var timeSec = 70 - count
+        var s = timeSec;
+        var h = Math.floor(s / 3600); //Get whole hours
+        s -= h * 3600;
+        var m = Math.floor(s / 60); //Get remaining minutes
+        s -= m * 60;
+
+        if (timeSec == 0)
+        {
+            jQuery.ajax({
+                url: '<?php echo base_url(); ?>exam/logout',
+                type: 'post',
+                data: {},
+                success: function (data) {
+                    $('.middle_part').html('<div class="exam_complete"><h1>You successfully completed the exam</h1></div>');
+                    $.cookie('mytimeout2', 0);
+                    alert('Your Exam is Submitted');
+                }
+            });
+        }
+        var string = "<span>" + h + "</span><span>" + m + "</span><span>" + s + "</span>";
+        $('#counter').html(string);
+    }
+    /* get the time passed from the cookie, if one is set */
+    var count = parseInt(($.cookie('mytimeout') || 0), 10);
+
+    /* set an interval that adds seconds to the count */
+    setCounter(count);
+    var interval = setInterval(function () {
+        count++;
+        setCounter(count);
+        /* plus, you can do something you want to do every second here, 
+         like display the countdown to the user */
+    }, 1000);
+
+    /* set a timeout that expires 900000 Milliseconds (15 Minutes) - 
+     the already passed time from now */
+    var timeout = setTimeout(function () {
+        /* put here what you want to do once the timer epires */
+
+
+    }, 900000 - count * 1000);
+
+    /* before the window is reloaded or closed, store the current timeout in a cookie. 
+     For cookie options visit jquery-cookie */
+    window.onbeforeunload = function () {
+        $.cookie('mytimeout', count, {
+            expires: 7,
+            path: '/'
+        });
+    };
+            </script>-->
             <script type="text/javascript">
+
+                function preventBack() {
+                    window.history.forward();
+                }
+                setTimeout("preventBack()", 0);
+                window.onunload = function () {
+                };
+
+
+                $(document).ready(function () {
+                    setInterval(updateTimer, 1000);
+                    $('#newPage').countdown({until: +6000, expiryUrl: '<?php echo base_url(); ?>exam/showQuestions',
+                        description: 'Time Left'});
+
+                    $('#newPageStart').click(function () {
+                        shortly = new Date();
+                        shortly.setSeconds(shortly.getSeconds() + 5.5);
+                        $('#newPage').countdown('option', {until: shortly});
+                    });
+                });
+
 
 
                 jQuery(document).on('click', '.sveAndNext', function () {
@@ -153,6 +271,12 @@ alert(confirmExit());
                         type: 'post',
                         data: {id: QuestionIdtoShow, Qid: QuestionIdcurrent, Ans: answer},
                         dataType: 'json',
+                        beforeSend: function () {
+                            $('#loading-image').show();
+                        },
+                        complete: function (jqXHR, textStatus) {
+                            $('#loading-image').hide();
+                        },
                         success: function (data) {
                             if (currentQuestionPalleteId == $('.getQuestionHtml:last').attr('data-questionnum'))
                             {
@@ -202,23 +326,7 @@ alert(confirmExit());
 
                 });
                 var GQuestionData = "";
-                function preventBack() {
-                    window.history.forward();
-                }
-                setTimeout("preventBack()", 0);
-                window.onunload = function () {
-                };
 
-                $(document).ready(function () {
-                    $('#newPage').countdown({until: +6000, expiryUrl: '<?php echo base_url(); ?>exam/showQuestions',
-                        description: 'Time Left'});
-
-                    $('#newPageStart').click(function () {
-                        shortly = new Date();
-                        shortly.setSeconds(shortly.getSeconds() + 5.5);
-                        $('#newPage').countdown('option', {until: shortly});
-                    });
-                });
 
                 jQuery(document).on('click', '.getQuestionHtml', function () {
                     var id = $(this).attr('data-questinId');
@@ -231,23 +339,11 @@ alert(confirmExit());
                         type: 'post',
                         data: {id: id, Qid: Qid},
                         dataType: 'json',
+                        beforeSend: function () {
+                            $('#loading-image').show();
+                        },
                         complete: function () {
-                            setTimeout(function () {
-                                alert(answer);
-                                $('.question_palette li').each(function () {
-                                    if ($(this).children('a').attr('data-questionnum') == Qid)
-                                    {
-                                        if (answer == 'not_answered')
-                                        {
-                                            $(this).children('a').attr('class', 'not_ans getQuestionHtml')
-                                        }
-                                        else
-                                        {
-                                            $(this).children('a').attr('class', 'ans getQuestionHtml')
-                                        }
-                                    }
-                                });
-                            }, 1000);
+
                         },
                         success: function (data) {
                             checkedOption1 = "";
@@ -293,6 +389,24 @@ alert(confirmExit());
                             {
                                 answer = 'not_answered';
                             }
+
+                            setTimeout(function () {
+                                $('#loading-image').hide();
+                                $('.question_palette li').each(function () {
+                                    if ($(this).children('a').attr('data-questionnum') == Qid)
+                                    {
+                                        if (answer == 'not_answered')
+                                        {
+                                            $(this).children('a').attr('class', 'not_ans getQuestionHtml')
+                                        }
+                                        else
+                                        {
+                                            $(this).children('a').attr('class', 'ans getQuestionHtml')
+                                        }
+                                    }
+                                });
+
+                            }, 1000);
                         }
                     });
                 });
@@ -350,14 +464,15 @@ alert(confirmExit());
                 }
 
                 jQuery(document).on('click', '.submitTest', function () {
-                    
+
                     jQuery.ajax({
                         url: '<?php echo base_url(); ?>exam/logout',
                         type: 'post',
-                        data: {},                        
+                        data: {},
                         success: function (data) {
+                            $('.middle_part').html('<div class="exam_complete"><h1>You successfully completed the exam</h1></div>');
                             alert('Your Exam is Submitted');
-                           $('.middle_part').html('You successfully completed the exam');
+                            localstorage.clear();
                         }
                     });
                 });

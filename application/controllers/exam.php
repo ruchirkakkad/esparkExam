@@ -23,6 +23,10 @@ class Exam extends CI_Controller
     }
     public function instructions()
     {
+        if ($this->session->userdata('question_to_be_asked') != '')
+        {
+            redirect(base_url() . 'exam/showQuestions');
+        }
         $this->load->view('instructions.php');
     }
     public function startexam()
@@ -103,7 +107,7 @@ class Exam extends CI_Controller
                                             question_id = '" . $_REQUEST['id'] . "' 
                                                 AND
                                             student_id = '" . $user_id . "') ans 
-                                FROM Question_master 
+                                FROM question_master 
                                     WHERE id = '" . $_REQUEST['id'] . "'")->result_array();
 //echo $this->db->last_query();
 
@@ -116,7 +120,9 @@ class Exam extends CI_Controller
     }
     public function logout()
     {
+        $user_id = $this->session->userdata('users');
+        $this->db->where("id",$user_id['id']);
+        $this->db->update("students",array("is_exam_attended"=>1));
         $this->session->sess_destroy();
-//        redirect(base_url() . 'exam');
     }
 }

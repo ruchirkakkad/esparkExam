@@ -13,9 +13,10 @@
       </ul>
     </div>
     <div class="subnav subnav-hidden">
-      <div class="subnav-title"> <a href="#" class='toggle-subnav'><i class="icon-angle-right"></i><span>Roster</span></a> </div>
+      <div class="subnav-title"> <a href="#" class='toggle-subnav'><i class="icon-angle-right"></i><span>Results</span></a> </div>
       <ul class="subnav-menu">
-        <li><a href="#">RosterManagement</a></li>
+        <li><a href="<?php echo base_url();?>result/getCollege">Result</a></li>
+        <li><a href="<?php echo base_url();?>question_master/ongoingExamStudents">Online Students</a></li>
       </ul>
     </div>
   </div>

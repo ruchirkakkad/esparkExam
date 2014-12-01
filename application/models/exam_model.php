@@ -47,37 +47,35 @@ class Exam_model extends CI_Model
                         ) AS t3";
 
             $arrTemp = $this->db->query($query)->result_array();
-
+         
             $arrQuestrion = array();
-            
+
             foreach ($arrTemp as $keyTemp => $valueTemp)
             {
                 $arrQuestrion[$valueTemp['id']] = $valueTemp['answer'];
-                
+
                 $insertString .= "(" . $user_id . "," . $valueTemp['id'] . "),";
                 $questionsFlags[$valueTemp['id']] = 'nv';
             }
             $questionIDs[$value['id']] = $arrQuestrion;
-
         }
-        
-       $insertString=  trim($insertString, ",");
+
+        $insertString = trim($insertString, ",");
         $insertQueryAnswerTable = "INSERT INTO student_answer_master (student_id, question_id) VALUES $insertString";
         $this->db->query($insertQueryAnswerTable);
-        $this->db->where('id',$user_id);
-        $update = array('is_exam_attended'=>0);
-        $this->db->update('students',$update);
+        $this->db->where('id', $user_id);
+        $update = array('is_exam_attended' => 0);
+        $this->db->update('students', $update);
         $this->session->set_userdata('questions_flag', $questionsFlags);
         return $questionIDs;
     }
-    public function submitAnswer($questionId,$Submittedanswer,$result)
+    public function submitAnswer($questionId, $Submittedanswer, $result)
     {
-        
-        $user_id = $this->session->userdata('users')['id'];
-        $this->db->where('student_id',$user_id);
-        $this->db->where('question_id',$questionId);
-        $update = array('answer_submitted'=>$Submittedanswer,'result'=>$result);
-        $this->db->update('student_answer_master',$update);
 
+        $user_id = $this->session->userdata('users')['id'];
+        $this->db->where('student_id', $user_id);
+        $this->db->where('question_id', $questionId);
+        $update = array('answer_submitted' => $Submittedanswer, 'result' => $result);
+        $this->db->update('student_answer_master', $update);
     }
 }

@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "dashboard";
+$route['default_controller'] = "exam";
 $route['page/(.*)'] = 'page/index/$1';
 $route['404_override'] = 'page_not_found';
 /* End of file routes.php */

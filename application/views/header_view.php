@@ -7,7 +7,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <!-- Apple devices fullscreen -->
         <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <title>FLAT - Dashboard</title>
+        <title><?php echo $title;?></title>
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
@@ -95,16 +95,16 @@
                 </ul>
                 <div class="user">
                     <div class="dropdown">
-                        <a href="#" class='dropdown-toggle' data-toggle="dropdown">John Doe <img src="<?php echo base_url(); ?>assets/img/user-avatar.jpg" alt=""></a>
+                        <a href="#" class='dropdown-toggle' data-toggle="dropdown">Admin</a>
                         <ul class="dropdown-menu pull-right">
-                            <li>
+<!--                            <li>
                                 <a href="more-userprofile.html">Edit profile</a>
                             </li>
                             <li>
                                 <a href="#">Account settings</a>
-                            </li>
+                            </li>-->
                             <li>
-                                <a href="more-login.html">Sign out</a>
+                                <a href="<?php echo base_url(); ?>dashboard/logout">Sign out</a>
                             </li>
                         </ul>
                     </div>
